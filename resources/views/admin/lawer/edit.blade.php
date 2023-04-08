@@ -132,8 +132,10 @@
                                                             <label for="projectinput2"> الرتبه </label>
                                                             <select name="rank" class="select2 form-control">
                                                                 <optgroup label="من فضلك أختر اتجاه اللغة ">
-                                                                    <option value="1" @if($lawer->rank == 1){echo 'checked';}@endif>جدول عام</option>
-                                                                    <option value="2" @if($lawer->rank == 2){echo 'checked';}@endif>أبتدائي</option>
+                                                                    <option value="جدول عام"@if($lawer->rank  === "جدول عام" ){{'selected'}}@endif> جدول عام</option>
+                                                                    <option value="أبتدائي" @if($lawer->rank  === "أبتدائي" ){{'selected'}}@endif> أبتدائي</option>
+                                                                    <option value="استئناف" @if($lawer->rank  === "استئناف" ){{'selected'}}@endif> استئناف</option>
+                                                                    <option value="نقض"     @if($lawer->rank  === "نقض" ){{'selected'}}@endif>      نقض</option>
                                                                 </optgroup>
                                                             </select>
                                                             <span class="text-danger"> </span>

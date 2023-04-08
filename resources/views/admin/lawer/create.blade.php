@@ -130,9 +130,11 @@
                                                         <div class="form-group">
                                                             <label for="projectinput2"> الرتبه </label>
                                                             <select name="rank" class="select2 form-control">
-                                                                <optgroup label="من فضلك أختر اتجاه اللغة ">
-                                                                    <option value="1">جدول عام</option>
-                                                                    <option value="2">أبتدائي</option>
+                                                                <optgroup label="من فضلك أختر الرتبه  ">
+                                                                    <option value="جدول عام">جدول عام</option>
+                                                                    <option value="أبتدائي">أبتدائي</option>
+                                                                    <option value="استئناف">استئناف</option>
+                                                                    <option value="نقض">نقض</option>
                                                                 </optgroup>
                                                             </select>
                                                             <span class="text-danger"> </span>

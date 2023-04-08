@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BattalionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdviceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +17,16 @@ use App\Http\Controllers\BattalionController;
 Route::get('/', function () {
     return view('welcome');
 });
+//test
 Route::get('/main', function () {
     return view('user.main');
 });
+Route::get('/legalAdvice', function () {
+    return view('user.home');
+});
+Route::get('/lawer/{id}', [HomeController::class, 'showLawer'])->name('show.lawer');
+Route::get('/lawer/{id}', [HomeController::class, 'chat'])->name('lawer.chat');
+Route::post('/lawer/chatting/{id}', [AdviceController::class, 'store'])->name('advice.store');
 //test
 
 Auth::routes();

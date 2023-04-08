@@ -49,7 +49,7 @@ class ClientController extends Controller
         $client->address = $req->address;
         $client->email = $req->email;
         $client->password = bcrypt($req->password);
-        if(isset($client->photo) && $client->photo != null){
+        if(isset($req->photo) && $req->photo != null){
             $client->photo = $this->save_file($req->photo, $path);
         }
 

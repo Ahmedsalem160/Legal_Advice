@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lawer;
+use App\Traits\FileTrait;
 
 class LawerController extends Controller
 {
+    use FileTrait;
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +38,7 @@ class LawerController extends Controller
      */
     public function store(Request $req)
     {
-        // dd($req);
+        $path = 'assets/file-store';
         $lawer = new Lawer();
         
         $lawer->username    = $req->username;
@@ -50,7 +52,9 @@ class LawerController extends Controller
         $lawer->grad_year   = $req->grad_year;
         $lawer->email       = $req->email;
         $lawer->password    = bcrypt($req->password);
-        
+        if (isset($req->photo) && $req->photo != null) {
+            $lawer->photo = $this->save_file($req->photo, $path);
+        }
         $lawer->save();
         return redirect()->route('lawer.index');
     }
@@ -87,6 +91,7 @@ class LawerController extends Controller
      */
     public function update(Request $request)
     {
+        $path = 'assets/file-store';
         $lawer_id = $request->lawer_id;
         //$lawer = Lawer::findOrFail($lawer_id);
         if ($request->password != null) {
@@ -102,7 +107,8 @@ class LawerController extends Controller
                           'phone'       => $request->phone,
                           'rank'        => $request->rank,
                           'grad_year'   => $request->grad_year,
-                          'phone'       => $request->phone,]);
+                          'phone'       => $request->phone,
+                          'photo'       => $this->save_file($request->photo, $path),]);
         return redirect()->route('lawer.index');
     }
 
