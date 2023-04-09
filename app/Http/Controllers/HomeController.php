@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lawer;
+use App\Models\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -15,6 +17,45 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+    }
+
+    public function login()
+    {
+        return view('user.login');
+    }
+
+    public function register()
+    {
+        return view('user.register');
+    }
+
+    public function postRegister(Request $req)
+    {
+        $email    = $req->email;
+        $name    = $req->name;
+        $password = bcrypt($req->password);
+        User::create(['name'=>$name,
+                      'email'=>$email,
+                      'password'=>$password]);
+        return redirect()->route('user.home');
+    }
+
+    public function postLogin(Request $req)
+    {
+        $email    = $req->email;
+        $password = $req->password;
+        if (Auth::attempt(['email'=>$email, 'password'=>$password])) {
+            return redirect()->route('user.home');
+        }else{
+            return redirect()->back()->withInputs($req->email);
+        }
+        
+    }
+
+    public function userLogout(){
+        Auth::guard('web')->logout();
+        return redirect()->route('get.user.login');
+    
     }
 
     /**

@@ -32,7 +32,7 @@ class AdminController extends Controller
             
             return redirect()->route('admin.dash');
         }else {
-            return redirect()->back()->withInputs($req->$email)->with('failed');//->withErrors()
+            return redirect()->back()->withInputs($req->$email)->withErrors();//->withErrors()
         }
     }
 

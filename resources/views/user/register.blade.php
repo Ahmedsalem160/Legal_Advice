@@ -9,7 +9,7 @@
     <meta name="keywords"
           content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>تسجيل دخول الادمن </title>
+    <title>تسجيل دخول المستخدم </title>
     <link rel="apple-touch-icon" href="admin/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/ico/favicon.ico')}}">
     <link
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                                    <span>الدخول للوحة التحكم </span>
+                                    <span>تسجيل بيانات  العميل</span>
                                 </h6>
                             </div>
 
@@ -80,19 +80,34 @@
 
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form-horizontal form-simple" enctype="multipart/form-data" action="{{route('admin.login')}}" method="post"
+                                    <form class="form-horizontal form-simple" enctype="multipart/form-data" action="{{route('user.register')}}" method="post"
                                           novalidate>
                                           @csrf
-                                        <fieldset class="form-group position-relative has-icon-left mb-1">
+                                          <fieldset class="form-group position-relative has-icon-left mb-1">
+                                            <input type="text" name="name"
+                                                   class="form-control form-control-lg input-lg"
+                                                   value="" id="email" placeholder="أدخل الاسم  ">
+                                            <div class="form-control-position">
+                                                <i class="ft-user"></i>
+                                            </div>
+
+                                            @error('name')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+
+                                        </fieldset>
+                                        <fieldset class="form-group position-relative has-icon-left ">
                                             <input type="text" name="email"
                                                    class="form-control form-control-lg input-lg"
                                                    value="" id="email" placeholder="أدخل البريد الالكتروني ">
                                             <div class="form-control-position">
                                                 <i class="ft-user"></i>
                                             </div>
+
                                             @error('email')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
+
                                         </fieldset>
                                         <fieldset class="form-group position-relative has-icon-left">
                                             <input type="password" name="password"
