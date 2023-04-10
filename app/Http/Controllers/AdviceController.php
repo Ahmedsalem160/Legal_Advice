@@ -13,6 +13,11 @@ class AdviceController extends Controller
     }
 
     public function store(Request $req, $id){
-        dd($req);
+        
+        Advice::create(['lawer_id'=>$id,
+                        'user_id'=>$req->user_id,
+                        'text'=>$req->text,
+                       ]);
+        return redirect()->back();
     }
 }

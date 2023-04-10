@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lawer;
 use App\Models\User;
+use App\Models\Advice;
 use Auth;
 
 class HomeController extends Controller
@@ -76,8 +77,14 @@ class HomeController extends Controller
     }
 
     public function chat($lawer_id)//$user_id
-    {
+    {   
         $lawer = Lawer::findOrFail($lawer_id);
-        return view('user.chat', compact('lawer'));
+        $user_id = Auth::user()->id;
+
+        $messages=Advice::where('lawer_id',$lawer_id)
+                                ->where('user_id',$user_id)->get();
+        
+       
+        return view('user.chat', compact('lawer','messages'));
     }
 }

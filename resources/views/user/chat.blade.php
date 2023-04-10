@@ -26,7 +26,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">    ملف {{$lawer->username}} المحامي </h4>
+                                    <h3 class="card-title">    محادثة مع {{$lawer->username}} المحامي </h3>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -43,11 +43,25 @@
 
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <h1>محادثة {{$lawer->username}}</h1>
+                                        <h1> الدردشه</h1>
+                                        @if(!empty($messages))
+                                            <div class="chat"><!-- الوعاء -->
+                                                <div class="message">
+                                                    <ul style="style-decoration:none">
+                                                        @foreach($messages as $message)
+                                                            {{$message->user->name}}:<li ><span class="text">{{$message->text}}</span></li>
+                                                        @endforeach
+                                                    </ul>
+                                                        
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="alert alert-success">أبدأ المحادثه الأن</div>
+                                        @endif
                                         <form action="{{route('advice.store',$lawer->id)}}" class="form" method="post">
                                             @csrf
                                             <textarea class="form-control" name="text" id="" cols="60" rows="10"></textarea>
-                                            <input type="hidden" name="user_id" value="1"/>
+                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
                                             <div class="form-actions">
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="la la-check-square-o"></i>   ارسال

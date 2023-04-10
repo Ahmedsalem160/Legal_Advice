@@ -9,4 +9,9 @@ class Advice extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 'lawer_id', 'user_id', 'text', 'created_at'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }
