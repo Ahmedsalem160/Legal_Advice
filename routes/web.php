@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdviceController;
+use App\Http\Controllers\PaymobController;
+use App\Http\Controllers\IssueController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,10 @@ Route::group(['middleware'=>'auth:web'], function(){
     Route::get('/lawer/{id}', [HomeController::class, 'showLawer'])->name('show.lawer');
     Route::get('/lawer/chatting/{id}', [HomeController::class, 'chat'])->name('lawer.chat');
     Route::post('/lawer/chatting/{id}', [AdviceController::class, 'store'])->name('advice.store');
+
+    Route::view('/user/payment','user.payment');
+    Route::get('/pay',[PaymobController::class, 'pay'])->name('paymob.pay');
+    Route::get('/state',[PaymobController::class, 'state'])->name('paymob.state');
     //test
 });
 
@@ -44,4 +50,4 @@ Route::group(['middleware'=>'auth:web'], function(){
 
 ################################# users Routes ###################################
 
-    
+

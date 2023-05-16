@@ -211,7 +211,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -244,26 +244,26 @@
 
 
             <li class="nav-item">
-                <a href="">
+                <a href="{{route('user.home')}}">
                     <i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">
                         المحاميين
                     </span>
                     <span class="badge badge badge-danger badge-pill float-right mr-2"></span>
                 </a>
-                
+
             </li>
 
             <li class="nav-item">
-                <a href=""><i class="la la-home"></i>
+                <a href="#"><i class="la la-home"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">القضايا المعلنه  </span>
                     <span class="badge badge badge-success badge-pill float-right mr-2"></span>
                 </a>
-                
+
             </li>
 
 
-            
+
         </ul>
     </div>
 </div>
@@ -378,6 +378,6 @@
         meridians: true,setCurrentTime: false
     });
 </script>
-    
+
 </body>
 </html>
